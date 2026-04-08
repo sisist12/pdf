@@ -3,27 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Modifier Web App</title>
+    <title>PDF Editor</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- pdf-lib for modifying PDFs -->
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+    <!-- pdf.js for rendering PDFs to Canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Set the workerSrc for pdf.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Simple PDF Modifier</h1>
-        <p>Upload a PDF, add some text, and download the updated file.</p>
+    <header>
+        <h1>PDF Editor</h1>
+    </header>
 
-        <div class="controls">
-            <input type="file" id="upload-pdf" accept="application/pdf" />
-            
-            <div id="edit-controls" class="hidden">
-                <input type="text" id="add-text-input" placeholder="Type text to add..." />
-                <button id="add-text-btn">Add Text & Save</button>
-            </div>
+    <div class="toolbar">
+        <input type="file" id="upload-pdf" accept="application/pdf" />
+
+        <div id="edit-controls" class="hidden">
+            <button id="add-text-btn">Add Text</button>
+            <button id="export-btn" class="primary">Export PDF</button>
         </div>
+    </div>
 
-        <div class="preview-section">
-            <h2>PDF Preview</h2>
-            <iframe id="pdf-preview" width="100%" height="500px"></iframe>
+    <div class="main-container">
+        <div id="viewer-container" class="viewer-container">
+            <!-- PDF pages will be rendered here as canvas elements -->
         </div>
     </div>
 
