@@ -1,32 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Modifier Web App</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Simple PDF Modifier</h1>
-        <p>Upload a PDF, add some text, and download the updated file.</p>
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
 
-        <div class="controls">
-            <input type="file" id="upload-pdf" accept="application/pdf" />
-            
-            <div id="edit-controls" class="hidden">
-                <input type="text" id="add-text-input" placeholder="Type text to add..." />
-                <button id="add-text-btn">Add Text & Save</button>
-            </div>
-        </div>
+.container {
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
-        <div class="preview-section">
-            <h2>PDF Preview</h2>
-            <iframe id="pdf-preview" width="100%" height="500px"></iframe>
-        </div>
-    </div>
+h1 {
+    margin-top: 0;
+    color: #2c3e50;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.controls {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #ecf0f1;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.tool-btn {
+    background-color: #f39c12;
+    color: white;
+}
+
+.export-btn {
+    background-color: #27ae60;
+    color: white;
+    margin-left: auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* This wrapper adds a scrollbar if the PDF is bigger than the screen */
+.canvas-wrapper {
+    border: 1px solid #bdc3c7;
+    background: #ecf0f1;
+    overflow: auto; 
+    max-height: 65vh;
+    display: flex;
+    justify-content: center;
+}
+
+/* Add a shadow to make the canvas look like a piece of paper */
+.canvas-container {
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
