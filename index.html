@@ -3,35 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Editor (Whiteout Hack)</title>
+    <title>Scientific Calculator</title>
     <link rel="stylesheet" href="style.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>PDF Whiteout Editor</h1>
-        <p>Upload a PDF, use "Whiteout" to hide old text, type over it, and export!</p>
+    <div class="calculator-container">
+        <h1>Scientific Calculator</h1>
+        <div class="calculator">
+            <input type="text" id="display" readonly placeholder="0">
+            <div class="buttons">
+                <!-- Row 1 -->
+                <button class="btn fn">sin</button>
+                <button class="btn fn">cos</button>
+                <button class="btn fn">tan</button>
+                <button class="btn operator clear" id="clear">C</button>
 
-        <div class="controls">
-            <input type="file" id="upload-pdf" accept="application/pdf" />
-            
-            <div id="edit-controls" class="hidden">
-                <button id="whiteout-btn" class="tool-btn">🟪 Add Whiteout Box</button>
-                <button id="text-btn" class="tool-btn">📝 Add Text</button>
-                <button id="export-btn" class="export-btn">💾 Export PDF</button>
+                <!-- Row 2 -->
+                <button class="btn fn">log</button>
+                <button class="btn fn">sqrt</button>
+                <button class="btn fn">(</button>
+                <button class="btn fn">)</button>
+
+                <!-- Row 3 -->
+                <button class="btn digit">7</button>
+                <button class="btn digit">8</button>
+                <button class="btn digit">9</button>
+                <button class="btn operator">/</button>
+
+                <!-- Row 4 -->
+                <button class="btn digit">4</button>
+                <button class="btn digit">5</button>
+                <button class="btn digit">6</button>
+                <button class="btn operator">*</button>
+
+                <!-- Row 5 -->
+                <button class="btn digit">1</button>
+                <button class="btn digit">2</button>
+                <button class="btn digit">3</button>
+                <button class="btn operator">-</button>
+
+                <!-- Row 6 -->
+                <button class="btn digit">0</button>
+                <button class="btn digit">.</button>
+                <button class="btn fn">^</button>
+                <button class="btn operator">+</button>
+
+                <!-- Row 7 -->
+                <button class="btn equals" id="equals">=</button>
             </div>
         </div>
-
-        <div class="canvas-wrapper">
-            <canvas id="pdf-canvas"></canvas>
-        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
